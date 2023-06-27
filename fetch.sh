@@ -43,7 +43,7 @@ get_storage_file()
     local backtrack_in_days=$1
 
     local datestr
-    datestr=$(gdate -d "today ${backtrack_in_days} day" "+%Y/%m/%d")
+    datestr=$(date -d "today ${backtrack_in_days} day" "+%Y/%m/%d")
 
     local path
     path="./data/${datestr}.json"
@@ -58,7 +58,7 @@ get_zappi_data()
     local backtrack_in_days=$2
 
     local datestr
-    datestr=$(gdate -d "today ${backtrack_in_days} day" "+%Y-%m-%d")
+    datestr=$(date -d "today ${backtrack_in_days} day" "+%Y-%m-%d")
 
     log "Fetching Zappi data for ${datestr}"
 
