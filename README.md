@@ -14,20 +14,20 @@ But for archival purpose (maybe the MyEnergi-App-Api repo get removed sometime),
 
 ```json
 {
-  "min": 1,		    // Minute
-  "dow": "Sat",		// Day of week
-  "dom": 8,		    // Day of month
-  "mon": 6,		    // Month
-  "yr": 2019,		  // Year
-  "imp": 42900,		// Imported Joules this minute; divide by 60 get average Watts; divide by 3600000 to get kWh
-  "exp": xxxxx,		// Exported Joules
-  "gen": 180,		  // ???
-  "gep": xxxxx,		// Generated Joules
-  "h1d": xxxxx,		// Phase 1 used Joules for charging
-  "h2d": xxxxx,		// Phase 2 used Joules for charging
-  "h3d": xxxxx,		// Phase 3 used Joules for charging
-  "v1": 2446,		  // Voltage
-  "frq": 5006,		// Frequency
+  "min": 1,       // Minute
+  "dow": "Sat",   // Day of week
+  "dom": 8,       // Day of month
+  "mon": 6,       // Month
+  "yr": 2019,     // Year
+  "imp": 42900,   // Imported Joules this minute; divide by 60 get average Watts; divide by 3600000 to get kWh
+  "exp": 260220,  // Exported Joules
+  "gen": 180,     // ???
+  "gep": 1560,    // Generated Joules
+  "h1d": 600,     // Phase 1 used Joules for charging
+  "h2d": 1260,    // Phase 2 used Joules for charging
+  "h3d": 720,     // Phase 3 used Joules for charging
+  "v1": 2446,     // Voltage
+  "frq": 5006,    // Frequency
   "nect1": 42900
 }
 ```
