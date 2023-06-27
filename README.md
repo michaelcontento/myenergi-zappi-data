@@ -21,14 +21,22 @@ But for archival purpose (maybe the MyEnergi-App-Api repo get removed sometime),
   "yr": 2019,     // Year
   "imp": 42900,   // Imported Joules this minute; divide by 60 get average Watts; divide by 3600000 to get kWh
   "exp": 260220,  // Exported Joules
-  "gen": 180,     // ???
-  "gep": 1560,    // Generated Joules
+  "gen": 180,     // Generated Joules Negative
+  "gep": 1560,    // Generated Joules Positive
   "h1d": 600,     // Phase 1 used Joules for charging
   "h2d": 1260,    // Phase 2 used Joules for charging
   "h3d": 720,     // Phase 3 used Joules for charging
-  "v1": 2446,     // Voltage
-  "frq": 5006,    // Frequency
-  "nect1": 42900
+  "h1b": 12312,   // Phase 1 used Joules for charging via BOOST
+  "h2b": 12312,   // Phase 2 used Joules for charging via BOOST
+  "h3b": 12312,   // Phase 3 used Joules for charging via BOOST
+  "v1": 2446,     // Supply Voltage (centi-volts)
+  "frq": 5006,    // Supply Frequency (centi-hertz -- 50,06hz in this case)
+  "pect1": 123,   // Positive Energy CT-1
+  "pect2": 123,   // Positive Energy CT-2
+  "pect3": 123,   // Positive Energy CT-3
+  "nect1": 123,   // Negative Energy CT-1
+  "nect2": 123,   // Negative Energy CT-2
+  "nect3": 123,   // Negative Energy CT-3
 }
 ```
 
