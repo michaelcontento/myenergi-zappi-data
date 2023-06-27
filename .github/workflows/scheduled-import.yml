@@ -1,0 +1,18 @@
+name: Data Import
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - run: ./fetch.sh ${{ secrets.MYENERGI_USERNAME }} ${{ secrets.MYENERGI_PASSWORD }} -2
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Import latest data
