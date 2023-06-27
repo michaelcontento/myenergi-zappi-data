@@ -1,4 +1,4 @@
-# myenergy-data
+# myenergi-zappi-data
 
 This repository contains (in the `data/` folder) the raw data of my [Zappi][] wallbox retreived from the official MyEnergi API. 
 
