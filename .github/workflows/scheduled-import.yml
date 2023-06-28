@@ -1,5 +1,8 @@
 name: Data Import
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
   schedule:
