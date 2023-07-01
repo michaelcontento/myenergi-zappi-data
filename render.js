@@ -1,7 +1,13 @@
-#!/usr/bin/env node 
+#!/usr/bin/env node
 
 import { markdownTable } from 'markdown-table'
 import { readdirSync, readFileSync, existsSync, writeFileSync } from 'fs'
+
+const pricePerKwhTable = {
+    "2023-01-01": 0.3085,
+    "2023-06-01": 0.4944,
+    "2023-07-14": 0.2892
+}
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
@@ -105,10 +111,17 @@ function renderMonth(month) {
         result = [...result, ...manualCorrections]
     }
 
-    const pricePerKwh = 0.4944
     let mdDate = [['Start', 'End', 'Amount', 'Price / kWh', 'Price']]
-    let sum = 0;
+    let sumWatts = 0
+    let sumPrice = 0
     result.forEach(x => {
+        let pricePerKwh = 0
+        Object.keys(pricePerKwhTable)
+            .forEach(lookup => {
+                if (new Date(lookup) <= x['date_start']) {
+                    pricePerKwh = pricePerKwhTable[lookup]
+                }
+            })
         let price = (Math.round(x['watts'] / 10 * pricePerKwh) / 100)
         let kWh = Math.round(x['watts'] / 10) / 100
 
@@ -123,14 +136,15 @@ function renderMonth(month) {
             pricePerKwh.toFixed(2) + ' €',
             price.toFixed(2) + ' €'
         ])
-        sum += x['watts']
+        sumWatts += x['watts']
+        sumPrice += price
     })
     mdDate.push([
         '',
         '**Total sum**',
-        '**' + (Math.round(sum / 10) / 100).toFixed(2) + ' kWh**',
-        '**' + (pricePerKwh).toFixed(2) + ' €**',
-        '**' + (Math.round(sum / 10 * pricePerKwh) / 100).toFixed(2) + ' €**'
+        '**' + (Math.round(sumWatts / 10) / 100).toFixed(2) + ' kWh**',
+        '',
+        '**' + sumPrice.toFixed(2) + ' €**'
     ])
     var a = markdownTable(mdDate, {align: ['l', 'r', 'r', 'r', 'r']})
 
