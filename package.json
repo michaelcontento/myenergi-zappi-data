@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "markdown-table": "^3.0.3"
+  }
+}
