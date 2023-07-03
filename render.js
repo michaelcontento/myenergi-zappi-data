@@ -146,15 +146,10 @@ function renderMonth(month) {
         '',
         '**' + sumPrice.toFixed(2) + ' €**'
     ])
-    var a = markdownTable(mdDate, {align: ['l', 'r', 'r', 'r', 'r']})
+    var markdown = markdownTable(mdDate, {align: ['l', 'r', 'r', 'r', 'r']})
 
-    writeFileSync(basePath + '/README.md', a)
+    writeFileSync(basePath + '/README.md', markdown)
 }
 
 readdirSync('data/2023')
-.forEach(x => {
-    renderMonth(x)
-})
-
-// renderMonth('05')
-// renderMonth('06')
+    .forEach(renderMonth)
