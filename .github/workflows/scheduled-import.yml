@@ -5,6 +5,11 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      backtrackDays:
+        requierd: true
+        default: -2
+        type: number
   schedule:
     - cron: "0 6 * * *"
 
@@ -14,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - run: ./fetch.sh ${{ secrets.MYENERGI_USERNAME }} ${{ secrets.MYENERGI_PASSWORD }} -2
+      - run: ./fetch.sh ${{ secrets.MYENERGI_USERNAME }} ${{ secrets.MYENERGI_PASSWORD }} ${{ inputs.backtrackDays || -2 }}
 
       - run: npm install
       - run: ./render.js
